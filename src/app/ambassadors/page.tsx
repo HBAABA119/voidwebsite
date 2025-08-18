@@ -172,13 +172,21 @@ export default function AmbassadorsPage() {
                 <h3 className="text-xl font-semibold mb-4 text-white">Clash Royale</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
-                  <p className="text-gray-300">- Evil Gruzz</p>
-                  <p className="text-gray-300">- Fuse</p>
-                  <p className="text-gray-300">- Void Frankenstine</p>
-                  <p className="text-gray-300">- Void FudgeCake</p>
-                  <p className="text-gray-300">- Void Lucas</p>
-                  <p className="text-gray-300">- Void toby!</p>
-                  <p className="text-gray-300">- Void Traffic</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Left column: 3 names */}
+                    <div className="space-y-1">
+                      <p className="text-gray-300">- Evil Gruzz</p>
+                      <p className="text-gray-300">- Fuse</p>
+                      <p className="text-gray-300">- Void Frankenstine</p>
+                    </div>
+                    {/* Right column: 4 names */}
+                    <div className="space-y-1">
+                      <p className="text-gray-300">- Void FudgeCake</p>
+                      <p className="text-gray-300">- Void Lucas</p>
+                      <p className="text-gray-300">- Void toby!</p>
+                      <p className="text-gray-300">- Void Traffic</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
