@@ -71,7 +71,7 @@ export default function AboutPage() {
         {/* Mission Statement */}
         <div className="void-card mb-16 hover-lift gpu-accelerated scroll-reveal">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative h-64 md:h-full min-h-[300px] rounded-lg overflow-hidden">
+            <div className="relative h-64 md:h-full min-h-[300px] rounded-lg overflow-hidden" data-cinematic data-depth="0.2" data-intensity="70">
               <Image
                 src="/logo.png"
                 alt="Void Esports Mission"

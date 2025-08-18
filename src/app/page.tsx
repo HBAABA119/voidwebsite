@@ -86,7 +86,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-20 h-screen flex items-center justify-center bg-[#0F0F0F] relative overflow-hidden">
         {/* Centered logo background */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center" data-cinematic data-depth="0.25" data-intensity="80">
           <Image
             src="/logos/logo.png"
             alt="Void Logo Background"

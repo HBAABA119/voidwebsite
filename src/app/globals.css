@@ -453,6 +453,13 @@ html {
     perspective: 1000px;
   }
 
+  /* Performance hints for cinematic scroll elements */
+  [data-cinematic] {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
   /* Enhanced gradient text */
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] via-[#e0e0e0] to-[#a2a2a2];
