@@ -143,14 +143,14 @@ export default function AmbassadorsPage() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Fortnite */}
+            {/* Free Fire */}
             <div className="stagger-child stagger-2">
               <div className="void-card hover-lift gpu-accelerated">
-                <h3 className="text-xl font-semibold mb-4 text-white">Fortnite</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">Free Fire</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
-                  <p className="text-gray-300">- Void Frankenstein</p>
-                  <p className="text-gray-300">- Void Gruun</p>
+                  <p className="text-gray-300">- Void Dj</p>
+                  <p className="text-gray-300">- Tbm</p>
                 </div>
               </div>
             </div>
@@ -172,7 +172,13 @@ export default function AmbassadorsPage() {
                 <h3 className="text-xl font-semibold mb-4 text-white">Clash Royale</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
-                  <p className="text-gray-300">- Void Bxezy</p>
+                  <p className="text-gray-300">- Evil Gruzz</p>
+                  <p className="text-gray-300">- Fuse</p>
+                  <p className="text-gray-300">- Void Frankenstine</p>
+                  <p className="text-gray-300">- Void FudgeCake</p>
+                  <p className="text-gray-300">- Void Lucas</p>
+                  <p className="text-gray-300">- Void toby!</p>
+                  <p className="text-gray-300">- Void Traffic</p>
                 </div>
               </div>
             </div>
@@ -194,7 +200,18 @@ export default function AmbassadorsPage() {
                 <h3 className="text-xl font-semibold mb-4 text-white">Overwatch 2</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
-                  <p className="text-gray-300">- Void Fuzzy</p>
+                  <p className="text-gray-300">- Tbm</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Super Smash Brothers Ultimate */}
+            <div className="stagger-child stagger-7">
+              <div className="void-card hover-lift gpu-accelerated">
+                <h3 className="text-xl font-semibold mb-4 text-white">Super Smash Brothers Ultimate</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-400 text-sm">Current Ambassadors:</p>
+                  <p className="text-gray-300">- aidab</p>
                 </div>
               </div>
             </div>
