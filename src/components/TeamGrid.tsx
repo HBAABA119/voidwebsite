@@ -3,12 +3,31 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Pagination from './Pagination';
+import PlayerCard from './PlayerCard';
+// Inline minimal SVG icons to avoid external dependencies
+
+interface PlayerSocialLinks {
+  twitter?: string;
+  twitch?: string;
+}
+
+interface Player {
+  name: string;
+  role: string;
+  image: string;
+  game: string;
+  achievements: string[];
+  socialLinks?: PlayerSocialLinks;
+}
 
 interface Team {
   name: string;
   image: string;
   description: string;
-  roster: string[];
+  // Legacy support
+  roster?: string[];
+  // New rich players schema
+  players?: Player[];
   achievements: string[];
 }
 
@@ -54,27 +73,53 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                 <p className="text-gray-300 text-lg stagger-child animate-slide-in-right" style={{ animationDelay: '100ms' }}>
                   {team.description}
                 </p>
-                
-                <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '200ms' }}>
-                  <h3 className="text-xl font-semibold mb-3 text-white">Current Roster</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {team.roster.map((player, playerIndex) => (
-                      <div 
-                        key={player} 
-                        className={`text-gray-400 transition-all duration-300 hover:text-white cursor-pointer hover:translate-x-2 hover:scale-105 p-2 rounded hover:bg-[#2A2A2A] gpu-accelerated`} 
-                        style={{ animationDelay: `${300 + playerIndex * 50}ms` }}
-                      >
-                        <span className="flex items-center">
-                          <span className="w-2 h-2 bg-[#FFFFFF] rounded-full mr-2 animate-pulse" />
-                          {player}
-                        </span>
-                      </div>
-                    ))}
+                {/* Players (new rich schema) or legacy roster */}
+                {team.players && team.players.length > 0 ? (
+                  <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '200ms' }}>
+                    <h3 className="text-xl font-semibold mb-4 text-white">Players</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {team.players.map((player, playerIndex) => (
+                        <div
+                          key={`${player.name}-${playerIndex}`}
+                          className="stagger-child animate-slide-in-right"
+                          style={{ animationDelay: `${300 + playerIndex * 75}ms` }}
+                        >
+                          <PlayerCard
+                            name={player.name}
+                            role={player.role}
+                            image={player.image}
+                            game={player.game}
+                            achievements={player.achievements}
+                            socialLinks={player.socialLinks}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  team.roster && team.roster.length > 0 && (
+                    <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '200ms' }}>
+                      <h3 className="text-xl font-semibold mb-3 text-white">Current Roster</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {team.roster.map((player, playerIndex) => (
+                          <div 
+                            key={player} 
+                            className={`text-gray-400 transition-all duration-300 hover:text-white cursor-pointer hover:translate-x-2 hover:scale-105 p-2 rounded hover:bg-[#2A2A2A] gpu-accelerated`} 
+                            style={{ animationDelay: `${300 + playerIndex * 50}ms` }}
+                          >
+                            <span className="flex items-center">
+                              <span className="w-2 h-2 bg-[#FFFFFF] rounded-full mr-2 animate-pulse" />
+                              {player}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                )}
                 
                 <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '400ms' }}>
-                  <h3 className="text-xl font-semibold mb-3 text-white">Role</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-white">Team Achievements</h3>
                   <div className="space-y-2">
                     {team.achievements.map((achievement, achIndex) => (
                       <div 
