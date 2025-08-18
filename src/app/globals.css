@@ -29,28 +29,41 @@
   width: 16px;
 }
 
+/* Slightly widen on hover for a premium feel */
+::-webkit-scrollbar:hover {
+  width: 18px;
+}
+
 ::-webkit-scrollbar-track {
   background: var(--void-dark);
   border-radius: 10px;
   margin: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
+/* Flashy thumb with subtle animated stripes on hover */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #FFFFFF 0%, #a2a2a2 50%, #FFFFFF 100%);
-  border-radius: 10px;
+  background-image:
+    linear-gradient(180deg, #FFFFFF 0%, #a2a2a2 50%, #FFFFFF 100%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.16) 0 8px, rgba(255,255,255,0.0) 8px 16px);
+  background-size: 100% 100%, 200% 100%;
+  background-position: 0 0, 0 0;
+  border-radius: 12px;
   border: 2px solid var(--void-dark);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease, background-position 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.12);
 }
 
+/* Stripe animation and glow on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #FFFFFF 0%, #8a8a8a 50%, #FFFFFF 100%);
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25), 0 0 24px rgba(255,255,255,0.08);
+  animation: stripeSlide 6s linear infinite;
 }
 
+/* Stronger glow while dragging */
 ::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, #e0e0e0 0%, #707070 50%, #e0e0e0 100%);
+  box-shadow: 0 2px 18px rgba(255, 255, 255, 0.35), 0 0 36px rgba(255,255,255,0.15);
 }
 
 ::-webkit-scrollbar-corner {
@@ -227,6 +240,16 @@ html {
   }
 }
 
+/* Scrollbar stripe slide animation */
+@keyframes stripeSlide {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 0, 200% 0;
+  }
+}
+
 @keyframes particle {
   0%, 100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);
@@ -271,7 +294,8 @@ html {
   }
 
   .void-button:hover {
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 24px rgba(255,255,255,0.08);
+    animation: glow 3s ease-in-out infinite;
   }
   
   .void-card {
@@ -280,11 +304,33 @@ html {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background: linear-gradient(135deg, #1A1A1A 0%, #252525 100%);
+    transform-style: preserve-3d;
   }
 
   .void-card:hover {
     background: linear-gradient(135deg, #252525 0%, #2F2F2F 100%);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255,255,255,0.06);
+    transform: translateY(-8px) scale(1.02) rotateX(0.5deg) rotateY(-0.5deg);
+  }
+
+  /* Animated underline for primary links inside content containers */
+  .void-container a:not(.void-button):not(.group) {
+    position: relative;
+    transition: color 0.25s ease;
+  }
+  .void-container a:not(.void-button):not(.group)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: #ffffff;
+    transition: width 0.3s ease;
+    opacity: 0.7;
+  }
+  .void-container a:not(.void-button):not(.group):hover::after {
+    width: 100%;
   }
 
   /* Enhanced Animation Classes */
@@ -332,6 +378,14 @@ html {
     animation: particle 12s ease-in-out infinite;
   }
 
+  /* Auto-entrance animation for headings (non-intrusive) */
+  .void-container h1:not(.stagger-child):not(.scroll-reveal),
+  .void-container h2:not(.stagger-child):not(.scroll-reveal) {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: slideInUp var(--animation-duration) var(--animation-easing) 0.05s forwards;
+  }
+
   /* Enhanced stagger delays */
   .stagger-1 { animation-delay: calc(var(--stagger-delay) * 1); }
   .stagger-2 { animation-delay: calc(var(--stagger-delay) * 2); }
@@ -366,13 +420,13 @@ html {
   /* Enhanced scroll reveal animations */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(50px) scale(0.98);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   /* Enhanced hover effects */
