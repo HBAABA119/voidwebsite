@@ -19,7 +19,7 @@ interface PlayerCardProps {
 export default function PlayerCard({ name, role, image, game, achievements = [], socialLinks }: PlayerCardProps) {
   return (
     <div
-      className="group/ply flex items-center gap-4 p-3 rounded-lg bg-[#161616] border border-[#2A2A2A] hover:border-[#FFFFFF]/30 transition-all duration-300 hover:translate-y-[-4px] hover-lift gpu-accelerated"
+      className="group/ply flex items-center gap-4 p-3 rounded-lg bg-[#161616] border border-[#2A2A2A] hover:border-[#FFFFFF]/30 transition-all duration-300 hover:translate-y-[-4px] hover-lift tilt gpu-accelerated"
     >
       <div className="relative h-16 w-16 rounded-md overflow-hidden shrink-0">
         <Image src={image} alt={name} fill className="object-cover" sizes="64px" />

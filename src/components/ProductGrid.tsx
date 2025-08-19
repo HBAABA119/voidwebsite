@@ -139,7 +139,7 @@ export default function ProductGrid({ products, itemsPerPage = 9 }: ProductGridP
         {currentProducts.map((product, index) => (
           <div 
             key={`${product.id}-${currentPage}`} 
-            className={`void-card group hover-lift stagger-child gpu-accelerated`}
+            className={`void-card group hover-lift tilt stagger-child gpu-accelerated`}
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="relative h-64 mb-4 overflow-hidden rounded-lg">

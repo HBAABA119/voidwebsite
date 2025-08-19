@@ -1,6 +1,7 @@
 "use client";
 
 import ProductGrid from '@/components/ProductGrid';
+import AdSenseAd from '@/components/AdSenseAd';
 
 const products = [
   {
@@ -156,7 +157,12 @@ export default function ShopPage() {
         <h1 className="text-4xl font-bold mb-12 gradient-text text-center">Shop</h1>
         
         <ProductGrid products={products} itemsPerPage={9} />
+
+        {/* Manual AdSense placement: Shop page bottom (subtle, below products) */}
+        <div className="mt-12 flex justify-center scroll-reveal">
+          <AdSenseAd slot="2012345680" className="max-w-full" style={{ minHeight: 90 }} />
+        </div>
       </div>
     </div>
   );
-} 
+}

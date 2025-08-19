@@ -1,6 +1,7 @@
 "use client";
 
 import NewsGrid from '@/components/NewsGrid';
+import AdSenseAd from '@/components/AdSenseAd';
 import { useEffect, useState } from 'react';
 
 const newsArticles = [
@@ -59,7 +60,7 @@ export default function NewsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
+    setIsLoaded(true);
     
     const observerOptions = {
       threshold: 0.1,
@@ -79,7 +80,6 @@ export default function NewsPage() {
     elements.forEach(el => observer.observe(el));
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -92,7 +92,7 @@ export default function NewsPage() {
         {/* Sponsored Banner (minimal) */}
         <div className="mb-8 scroll-reveal">
           <a href="/shop" className="block">
-            <div className="void-card flex items-center gap-4 justify-center hover-lift">
+            <div className="void-card flex items-center gap-4 justify-center hover-lift tilt">
               <div className="text-xs uppercase tracking-widest text-gray-400">Sponsored</div>
               <div className="text-sm text-white">Support Void — grab the latest merch →</div>
             </div>
@@ -101,6 +101,11 @@ export default function NewsPage() {
 
         <div className="scroll-reveal">
           <NewsGrid articles={newsArticles} itemsPerPage={6} />
+        </div>
+
+        {/* Manual AdSense placement: News page bottom */}
+        <div className="mt-12 flex justify-center scroll-reveal">
+          <AdSenseAd slot="2012345679" className="max-w-full" style={{ minHeight: 90 }} />
         </div>
       </div>
     </div>

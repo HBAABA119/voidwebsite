@@ -75,7 +75,7 @@ export default function NewsGrid({
         {currentArticles.map((article, index) => (
           <article 
             key={`${article.title}-${currentPage}`}
-            className={`void-card group cursor-pointer hover-lift stagger-child gpu-accelerated`} 
+            className={`void-card group cursor-pointer hover-lift tilt stagger-child gpu-accelerated`} 
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="relative h-48 mb-4 overflow-hidden rounded-lg">

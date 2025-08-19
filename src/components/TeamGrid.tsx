@@ -51,7 +51,7 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
         {currentTeams.map((team, index) => (
           <div 
             key={`${team.name}-${currentPage}`} 
-            className={`void-card scroll-reveal hover-lift gpu-accelerated`} 
+            className={`void-card scroll-reveal hover-lift tilt gpu-accelerated`} 
             style={{ animationDelay: `${index * 200}ms` }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

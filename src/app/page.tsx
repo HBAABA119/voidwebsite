@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from 'next/link';
+import AdSenseAd from '@/components/AdSenseAd';
 import { useEffect, useState } from 'react';
 
 const featuredTeams = [
@@ -48,7 +49,7 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
+    setIsLoaded(true);
     
     // Initialize scroll reveal animations
     const observerOptions = {
@@ -69,7 +70,6 @@ export default function Home() {
     elements.forEach(el => observer.observe(el));
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -150,7 +150,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-12 text-center gradient-text stagger-child">Our Teams</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredTeams.map((team, index) => (
-              <div key={`${team.name}-${index}`} className={`void-card group hover-lift gpu-accelerated stagger-child stagger-${index + 1}`}>
+              <div key={`${team.name}-${index}`} className={`void-card group hover-lift gpu-accelerated tilt stagger-child stagger-${index + 1}`}>
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                   <Image
                     src={team.image}
@@ -173,7 +173,7 @@ export default function Home() {
       <section className="py-8 bg-[#0F0F0F] scroll-reveal">
         <div className="void-container">
           <a href="/shop" className="block">
-            <div className="void-card flex items-center gap-4 justify-center hover-lift">
+            <div className="void-card flex items-center gap-4 justify-center hover-lift tilt">
               <div className="text-xs uppercase tracking-widest text-gray-400">Sponsored</div>
               <div className="relative h-12 w-12 rounded-md overflow-hidden">
                 <Image src="/store/CobraHoodie.png" alt="Shop Void Merch" fill className="object-contain" />
@@ -191,7 +191,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {latestNews.map((news, index) => (
               <Link key={news.title} href="/news" className="block">
-                <div className={`void-card group cursor-pointer hover-lift gpu-accelerated stagger-child stagger-${index + 1}`}>
+                <div className={`void-card group cursor-pointer hover-lift gpu-accelerated tilt stagger-child stagger-${index + 1}`}>
                   <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                     <Image
                       src={news.image}
@@ -218,6 +218,10 @@ export default function Home() {
             <Link href="/news" className="void-button hover-lift">
               View All News
             </Link>
+          </div>
+          {/* Manual AdSense placement: Homepage, below the Latest News block */}
+          <div className="mt-12 flex justify-center">
+            <AdSenseAd slot="2012345678" className="max-w-full" style={{ minHeight: 90 }} />
           </div>
         </div>
       </section>

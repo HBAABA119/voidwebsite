@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import ScrollRevealProvider from "@/components/ScrollRevealProvider";
 import PageTransition from "@/components/PageTransition";
+import GlobalEffects from "@/components/GlobalEffects";
 
 export const metadata: Metadata = {
   title: {
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className="antialiased bg-[#0F0F0F] text-white">
         <ErrorBoundary>
           <ScrollRevealProvider />
+          <GlobalEffects />
           <div className="flex flex-col min-h-screen">
             <Navbar />
             <main className="flex-1">

@@ -34,7 +34,7 @@ export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
+    setIsLoaded(true);
     
     const observerOptions = {
       threshold: 0.1,
@@ -54,7 +54,6 @@ export default function AboutPage() {
     elements.forEach(el => observer.observe(el));
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);

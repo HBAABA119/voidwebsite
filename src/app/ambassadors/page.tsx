@@ -7,7 +7,7 @@ export default function AmbassadorsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
+    setIsLoaded(true);
     
     // Initialize scroll reveal animations
     const observerOptions = {
@@ -28,7 +28,6 @@ export default function AmbassadorsPage() {
     elements.forEach(el => observer.observe(el));
 
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -81,7 +80,7 @@ export default function AmbassadorsPage() {
             </h2>
           </div>
           <div className="stagger-child stagger-2">
-            <div className="void-card">
+            <div className="void-card tilt">
               <p className="text-lg text-gray-300 leading-relaxed">
                 The Void Outreach Program is very simple. Make a team or group in any game you play. Reach out to us showing you have made it and then that&apos;s it. You will be an official brand ambassador in that game and will be featured on our website when it is all set up. All you have to do is make sure that you play that game often enough so that we are active in that game.
               </p>
@@ -99,7 +98,7 @@ export default function AmbassadorsPage() {
             </h2>
           </div>
           <div className="stagger-child stagger-2">
-            <div className="void-card">
+            <div className="void-card tilt">
               <p className="text-lg text-gray-300 leading-relaxed">
                 This is to help us grow outside of Fortnite. We would love to gain a presence in games like Siege, CSGO, Warzone, Clash Royale, Brawl Stars and more!
               </p>
@@ -118,7 +117,7 @@ export default function AmbassadorsPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="stagger-child stagger-2">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-2 text-white">Board of Directors</h3>
                 <p className="text-gray-300">
                   If you are the brand ambassador for any game and that game becomes successful for Void you are put onto the board of directors automatically. This allows you to make money from Void and have Void invest in your favorite games.
@@ -126,7 +125,7 @@ export default function AmbassadorsPage() {
               </div>
             </div>
             <div className="stagger-child stagger-3">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-2 text-white">Content Promotion</h3>
                 <p className="text-gray-300">
                   If you also want you can make content and we can end up promoting it around our brand. (This is by discretion of leadership if we invest!)
@@ -148,7 +147,7 @@ export default function AmbassadorsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Free Fire */}
             <div className="stagger-child stagger-2">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Free Fire</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
@@ -160,7 +159,7 @@ export default function AmbassadorsPage() {
             
             {/* Brawl Stars */}
             <div className="stagger-child stagger-3">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Brawl Stars</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
@@ -171,7 +170,7 @@ export default function AmbassadorsPage() {
             
             {/* Clash Royale */}
             <div className="stagger-child stagger-4">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Clash Royale</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
@@ -196,7 +195,7 @@ export default function AmbassadorsPage() {
 
             {/* Split Gate 2 */}
             <div className="stagger-child stagger-5">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Split Gate 2</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
@@ -207,7 +206,7 @@ export default function AmbassadorsPage() {
 
             {/* Overwatch 2 */}
             <div className="stagger-child stagger-6">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Overwatch 2</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
@@ -218,7 +217,7 @@ export default function AmbassadorsPage() {
 
             {/* Super Smash Brothers Ultimate */}
             <div className="stagger-child stagger-7">
-              <div className="void-card hover-lift gpu-accelerated">
+              <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Super Smash Brothers Ultimate</h3>
                 <div className="space-y-2">
                   <p className="text-gray-400 text-sm">Current Ambassadors:</p>
