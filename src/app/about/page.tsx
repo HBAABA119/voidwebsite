@@ -34,7 +34,7 @@ export default function AboutPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
     
     const observerOptions = {
       threshold: 0.1,
@@ -53,7 +53,10 @@ export default function AboutPage() {
     const elements = document.querySelectorAll('.scroll-reveal');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return (

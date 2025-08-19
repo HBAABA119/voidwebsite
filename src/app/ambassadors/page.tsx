@@ -7,7 +7,7 @@ export default function AmbassadorsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
     
     // Initialize scroll reveal animations
     const observerOptions = {
@@ -27,7 +27,10 @@ export default function AmbassadorsPage() {
     const elements = document.querySelectorAll('.scroll-reveal');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   if (!isLoaded) {

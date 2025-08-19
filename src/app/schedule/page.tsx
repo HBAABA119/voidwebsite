@@ -11,14 +11,7 @@ const upcomingMatches = [
     time: '7:00 PM EST',
     streamLink: 'https://www.twitch.tv/voidfrankenstein'
   },
-  {
-    game: 'Valorant',
-    event: 'Community Tournament',
-    opponent: 'TBD',
-    date: '2025-01-20',
-    time: '6:00 PM EST',
-    streamLink: 'https://www.twitch.tv/voidfrankenstein'
-  }
+  
 ];
 
 const upcomingEvents = [
@@ -29,14 +22,6 @@ const upcomingEvents = [
     date: '2025-02-01',
     prizePool: '$100,000',
     registrationLink: '#'
-  },
-  {
-    name: 'Valorant Open',
-    game: 'Valorant',
-    type: 'Open Tournament',
-    date: '2025-02-15',
-    prizePool: '$5,000',
-    registrationLink: '#'
   }
 ];
 
@@ -44,7 +29,7 @@ export default function SchedulePage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
     
     const observerOptions = {
       threshold: 0.1,
@@ -63,7 +48,10 @@ export default function SchedulePage() {
     const elements = document.querySelectorAll('.scroll-reveal');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return (

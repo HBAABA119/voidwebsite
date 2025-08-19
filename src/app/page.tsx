@@ -11,11 +11,6 @@ const featuredTeams = [
       description: 'Rising stars in the competitive Fortnite scene.',
     },
     {
-      name: 'Valorant',
-      image: '/teams/valorant.png',
-      description: 'Building a competitive Valorant roster to compete regionally.',
-    },
-    {
       name: 'Void Community',
       image: '/logos/logo.png',
       description: 'Join our growing community spanning multiple game titles.',
@@ -23,6 +18,12 @@ const featuredTeams = [
 ];
 
 const latestNews = [
+  {
+    title: "Void's Fortnite Map Released",
+    date: '2025-08-19',
+    image: '/news/1v1_map_void.png',
+    description: "Void launches its first-ever Fortnite map 'Void 1v1s'. Search 'VOID 1V1s' or enter code 2456-1967-8161 to play.",
+  },
   {
     title: 'Void Announces New Giveaway',
     date: '2025-08-5',
@@ -36,7 +37,7 @@ const latestNews = [
     description: 'We are proud to say that Void Blu went crazy in FNCS Grands and earned over 2500 dollars split across his trio. We want to wish Blu good luck in the next FNCS and we are very proud of him.',
   },
   {
-    title: 'Void Blu and Void Drvzy Qualify to FNCS Grand Finals',
+    title: 'Void Blu, Void Drvzy, and Void Fx1ine Qualify to FNCS Grand Finals',
     date: '2025-07-20',
     image: '/news/FNCS.png',
     description: 'We are excited to announce that Both of our signings, Blue and Drvzy, qualified to FNCS Major 3 Grand Finals! We really wish them the best of luck in winning and qualifying to the FNCS Global Championships in France!',
@@ -47,7 +48,7 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
     
     // Initialize scroll reveal animations
     const observerOptions = {
@@ -67,7 +68,10 @@ export default function Home() {
     const elements = document.querySelectorAll('.scroll-reveal');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   if (!isLoaded) {

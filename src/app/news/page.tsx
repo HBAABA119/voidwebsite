@@ -5,6 +5,13 @@ import { useEffect, useState } from 'react';
 
 const newsArticles = [
   {
+    title: "Void's Fortnite Map Released",
+    date: '2025-08-19',
+    image: '/news/1v1_map_void.png',
+    description: "Void has officially launched its first-ever Fortnite map, 'Void 1v1s.' Play by searching 'VOID 1V1s' or using code 2456-1967-8161.",
+    category: 'Fortnite',
+  },
+  {
     title: 'Void Announces New Giveaway',
     date: '2025-08-5',
     image: '/news/wavedashh.png',
@@ -12,7 +19,7 @@ const newsArticles = [
     category: 'Fortnite',
   },
   {
-    title: 'Void Earns in FNCS Grand Finals',
+    title: 'Void Blu, Void Drvzy, and Void Fx1ine Qualify to FNCS Grand Finals',
     date: '2025-08-3',
     image: '/news/FNCS.png',
     description: 'We are proud to say that Void Blu went crazy in FNCS Grands and earned over 2500 dollars split across his trio. We want to wish Blu good luck in the next FNCS and we are very proud of him.',
@@ -31,13 +38,6 @@ const newsArticles = [
     image: '/news/wavedashh.png',
     description: 'We are thrilled to announce our new signings for our Fortnite team, Blu and Drvzy!',
     category: 'Fortnite',
-  },
-  {
-    title: 'Void Announces Upcoming Valorant Team',
-    date: '2025-06-01',
-    image: '/teams/valorant.png',
-    description: 'We are thrilled to announce our new Valorant team, featuring some of the most talented players in the region. Get ready for an exciting season ahead!',
-    category: 'Valorant',
   },
   {
     title: 'Void Updates Assets',
@@ -59,7 +59,7 @@ export default function NewsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = window.setTimeout(() => setIsLoaded(true), 1700);
     
     const observerOptions = {
       threshold: 0.1,
@@ -78,7 +78,10 @@ export default function NewsPage() {
     const elements = document.querySelectorAll('.scroll-reveal');
     elements.forEach(el => observer.observe(el));
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
