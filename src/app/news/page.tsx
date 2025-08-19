@@ -1,7 +1,6 @@
 "use client";
 
 import NewsGrid from '@/components/NewsGrid';
-import AdSenseAd from '@/components/AdSenseAd';
 import { useEffect, useState } from 'react';
 
 const newsArticles = [
@@ -103,10 +102,7 @@ export default function NewsPage() {
           <NewsGrid articles={newsArticles} itemsPerPage={6} />
         </div>
 
-        {/* Manual AdSense placement: News page bottom */}
-        <div className="mt-12 flex justify-center scroll-reveal">
-          <AdSenseAd slot="2012345679" className="max-w-full" style={{ minHeight: 90 }} />
-        </div>
+        {/* Ad placeholder removed */}
       </div>
     </div>
   );

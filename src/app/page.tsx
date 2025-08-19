@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from 'next/link';
-import AdSenseAd from '@/components/AdSenseAd';
 
 const featuredTeams = [
     {
@@ -179,10 +178,7 @@ export default function Home() {
               View All News
             </Link>
           </div>
-          {/* Manual AdSense placement: Homepage, below the Latest News block */}
-          <div className="mt-12 flex justify-center">
-            <AdSenseAd slot="2012345678" className="max-w-full" style={{ minHeight: 90 }} />
-          </div>
+          {/* Ad placeholder removed */}
         </div>
       </section>
     </div>
