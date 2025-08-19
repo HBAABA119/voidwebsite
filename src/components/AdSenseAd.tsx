@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 // Declare the adsbygoogle type on window
 declare global {
   interface Window {
-    adsbygoogle?: any[];
+    adsbygoogle?: unknown[];
   }
 }
 
@@ -39,7 +39,7 @@ export default function AdSenseAd({
         // Push a new ad request
         (window.adsbygoogle = window.adsbygoogle || []).push({});
         initializedRef.current = true;
-      } catch (e) {
+      } catch {
         // no-op
       }
     };
