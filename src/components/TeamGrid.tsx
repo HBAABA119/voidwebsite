@@ -48,7 +48,7 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
     <div className="space-y-12">
       {/* Teams Display */}
       <div className="space-y-16">
-        {currentTeams.map((team, index) => (
+        {currentTeams.map((team) => (
           <div 
             key={`${team.name}-${currentPage}`} 
             className={`void-card scroll-reveal hover-lift tilt gpu-accelerated`} 
@@ -77,9 +77,9 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                   <div className="stagger-child animate-slide-in-right">
                     <h3 className="text-xl font-semibold mb-4 text-white">Players</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger" data-stagger-step="75">
-                      {team.players.map((player, playerIndex) => (
+                      {team.players.map((player) => (
                         <div
-                          key={`${player.name}-${playerIndex}`}
+                          key={player.name}
                           className="stagger-child animate-slide-in-right"
                         >
                           <PlayerCard
@@ -99,7 +99,7 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                     <div className="stagger-child animate-slide-in-right">
                       <h3 className="text-xl font-semibold mb-3 text-white">Current Roster</h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 stagger" data-stagger-step="60">
-                        {team.roster.map((player, playerIndex) => (
+                        {team.roster.map((player) => (
                           <div 
                             key={player} 
                             className={`text-gray-400 transition-all duration-300 hover:text-white cursor-pointer hover:translate-x-2 hover:scale-105 p-2 rounded hover:bg-[#2A2A2A] gpu-accelerated`} 
@@ -118,7 +118,7 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                 <div className="stagger-child animate-slide-in-right">
                   <h3 className="text-xl font-semibold mb-3 text-white">Team Achievements</h3>
                   <div className="space-y-2 stagger" data-stagger-step="50">
-                    {team.achievements.map((achievement, achIndex) => (
+                    {team.achievements.map((achievement) => (
                       <div 
                         key={achievement} 
                         className={`text-gray-400 flex items-start gpu-accelerated`} 

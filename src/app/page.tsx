@@ -149,7 +149,7 @@ export default function Home() {
         <div className="void-container stagger" data-stagger-step="90">
           <h2 className="text-3xl font-bold mb-12 text-center gradient-text stagger-child">Latest News</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger" data-stagger-step="90">
-            {latestNews.map((news, index) => (
+            {latestNews.map((news) => (
               <Link key={news.title} href="/news" className="block">
                 <div className={`void-card group cursor-pointer hover-lift gpu-accelerated tilt stagger-child`}>
                   <div className="relative h-48 mb-4 overflow-hidden rounded-lg">

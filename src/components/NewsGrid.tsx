@@ -72,7 +72,7 @@ export default function NewsGrid({
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal stagger" data-stagger-step="90">
-        {currentArticles.map((article, index) => (
+        {currentArticles.map((article) => (
           <article 
             key={`${article.title}-${currentPage}`}
             className={`void-card group cursor-pointer hover-lift tilt stagger-child gpu-accelerated`} 
