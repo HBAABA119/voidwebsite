@@ -44,7 +44,7 @@ export default function SEOHead({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:creator" content="@VoidEsports2x" />
+      <meta name="twitter:creator" content="@VoidEsports3x" />
       
       {/* Additional Meta */}
       <meta name="theme-color" content="#0F0F0F" />
@@ -62,7 +62,7 @@ export default function SEOHead({
             "logo": "https://www.voidesports.org/logo.png",
             "description": description,
             "sameAs": [
-              "https://twitter.com/VoidEsports2x",
+              "https://x.com/VoidEsports3x",
               "https://discord.gg/voidesports2x",
               "https://www.twitch.tv/voidfrankenstein",
               "https://www.youtube.com/@VoidEsports1x",

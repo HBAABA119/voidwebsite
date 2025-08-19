@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Void Esports - Professional Gaming Organization",
     description: "Professional esports organization dedicated to excellence in competitive gaming.",
-    creator: "@VoidEsports2x",
+    creator: "@VoidEsports3x",
     images: ["/logo.png"],
   },
   robots: {

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FaTwitter, FaDiscord, FaTwitch, FaYoutube, FaInstagram } from 'react-icons/fa';
 
 const socialLinks = [
-  { name: 'Twitter', href: 'https://x.com/VoidEsports2x', icon: FaTwitter },
+  { name: 'Twitter', href: 'https://x.com/VoidEsports3x', icon: FaTwitter },
   { name: 'Discord', href: 'https://discord.gg/voidesports2x', icon: FaDiscord },
   { name: 'Twitch', href: 'https://www.twitch.tv/voidfrankenstein', icon: FaTwitch },
   { name: 'YouTube', href: 'https://www.youtube.com/@VoidEsports1x', icon: FaYoutube },

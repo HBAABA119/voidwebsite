@@ -30,7 +30,7 @@ export default function CareersContent() {
         {/* Social Media Links */}
         <div className="flex justify-center gap-6 mt-8 text-base">
           <a
-            href="https://twitter.com/voideasports2x "
+            href="https://x.com/VoidEsports3x"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-white transition-colors duration-300"
