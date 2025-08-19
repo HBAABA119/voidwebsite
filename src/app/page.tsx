@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from 'next/link';
 import AdSenseAd from '@/components/AdSenseAd';
-import { useEffect, useState } from 'react';
 
 const featuredTeams = [
     {
@@ -46,47 +45,8 @@ const latestNews = [
 ];
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    
-    // Initialize scroll reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    const elements = document.querySelectorAll('.scroll-reveal');
-    elements.forEach(el => observer.observe(el));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  if (!isLoaded) {
-    return (
-      <div className="min-h-screen bg-[#0F0F0F] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#FFFFFF]/20 border-t-[#FFFFFF] rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white text-lg">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className={`min-h-screen bg-[#0F0F0F] text-white transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={"min-h-screen bg-[#0F0F0F] text-white"}>
       {/* Hero Section */}
       <section className="pt-20 h-screen flex items-center justify-center bg-[#0F0F0F] relative overflow-hidden">
         {/* Centered logo background */}
@@ -102,20 +62,20 @@ export default function Home() {
           />
         </div>
         
-        <div className="text-center void-container relative z-10">
-          <div className="stagger-child stagger-1">
+        <div className="text-center void-container relative z-10 stagger" data-stagger-step="90">
+          <div className="stagger-child">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text animate-bounce-in gpu-accelerated">
               WELCOME TO VOID
             </h1>
           </div>
           
-          <div className="stagger-child stagger-2">
+          <div className="stagger-child">
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-in-up gpu-accelerated">
               A professional esports organization dedicated to excellence in competitive gaming
             </p>
           </div>
           
-          <div className="stagger-child stagger-3">
+          <div className="stagger-child">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/teams" className="void-button animate-glow hover-lift animate-scale-in">
                 Our Teams
@@ -146,11 +106,11 @@ export default function Home() {
 
       {/* Featured Teams Section */}
       <section className="py-20 bg-[#0F0F0F] scroll-reveal">
-        <div className="void-container">
+        <div className="void-container stagger" data-stagger-step="90">
           <h2 className="text-3xl font-bold mb-12 text-center gradient-text stagger-child">Our Teams</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger" data-stagger-step="90">
             {featuredTeams.map((team, index) => (
-              <div key={`${team.name}-${index}`} className={`void-card group hover-lift gpu-accelerated tilt stagger-child stagger-${index + 1}`}>
+              <div key={`${team.name}-${index}`} className={`void-card group hover-lift gpu-accelerated tilt stagger-child`}>
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                   <Image
                     src={team.image}
@@ -186,12 +146,12 @@ export default function Home() {
 
       {/* Latest News Section */}
       <section className="py-20 bg-[#1A1A1A] scroll-reveal">
-        <div className="void-container">
+        <div className="void-container stagger" data-stagger-step="90">
           <h2 className="text-3xl font-bold mb-12 text-center gradient-text stagger-child">Latest News</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger" data-stagger-step="90">
             {latestNews.map((news, index) => (
               <Link key={news.title} href="/news" className="block">
-                <div className={`void-card group cursor-pointer hover-lift gpu-accelerated tilt stagger-child stagger-${index + 1}`}>
+                <div className={`void-card group cursor-pointer hover-lift gpu-accelerated tilt stagger-child`}>
                   <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                     <Image
                       src={news.image}
@@ -214,7 +174,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <div className="text-center mt-12 stagger-child stagger-4">
+          <div className="text-center mt-12 stagger-child">
             <Link href="/news" className="void-button hover-lift">
               View All News
             </Link>

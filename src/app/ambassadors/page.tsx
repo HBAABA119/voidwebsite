@@ -1,48 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from 'next/image';
 
 export default function AmbassadorsPage() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    
-    // Initialize scroll reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    const elements = document.querySelectorAll('.scroll-reveal');
-    elements.forEach(el => observer.observe(el));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  if (!isLoaded) {
-    return (
-      <div className="min-h-screen bg-[#0F0F0F] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-[#FFFFFF]/20 border-t-[#FFFFFF] rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-white text-lg">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <main className="pt-20 min-h-screen bg-[#0F0F0F] text-white">
       {/* Hero Section */}
@@ -57,13 +18,13 @@ export default function AmbassadorsPage() {
             className="w-72 md:w-[400px] opacity-20 animate-float gpu-accelerated"
           />
         </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10 stagger" data-stagger-step="90">
+          <div className="stagger-child">
             <h1 className="text-4xl md:text-5xl font-bold mb-10 leading-tight gradient-text animate-bounce-in gpu-accelerated">
               Announcing the Void Outreach Program!
             </h1>
           </div>
-          <div className="stagger-child stagger-2">
+          <div className="stagger-child">
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mt-4 animate-slide-in-up gpu-accelerated">
               The Void Outreach Program allows anyone to become an official brand ambassador today and help Void grow in every game you play!
             </p>
@@ -73,13 +34,13 @@ export default function AmbassadorsPage() {
 
       {/* What is it Section */}
       <section className="py-16 px-6 bg-[#1A1A1A] scroll-reveal">
-        <div className="max-w-4xl mx-auto">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-4xl mx-auto stagger" data-stagger-step="80">
+          <div className="stagger-child">
             <h2 className="text-3xl font-bold text-center gradient-text mb-8 animate-slide-in-up gpu-accelerated">
               What is it?
             </h2>
           </div>
-          <div className="stagger-child stagger-2">
+          <div className="stagger-child">
             <div className="void-card tilt">
               <p className="text-lg text-gray-300 leading-relaxed">
                 The Void Outreach Program is very simple. Make a team or group in any game you play. Reach out to us showing you have made it and then that&apos;s it. You will be an official brand ambassador in that game and will be featured on our website when it is all set up. All you have to do is make sure that you play that game often enough so that we are active in that game.
@@ -91,13 +52,13 @@ export default function AmbassadorsPage() {
 
       {/* Why we're doing this Section */}
       <section className="py-16 px-6 bg-[#0F0F0F] scroll-reveal">
-        <div className="max-w-4xl mx-auto">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-4xl mx-auto stagger" data-stagger-step="80">
+          <div className="stagger-child">
             <h2 className="text-3xl font-bold text-center gradient-text mb-8 animate-slide-in-up gpu-accelerated">
               Why we&apos;re doing this?
             </h2>
           </div>
-          <div className="stagger-child stagger-2">
+          <div className="stagger-child">
             <div className="void-card tilt">
               <p className="text-lg text-gray-300 leading-relaxed">
                 This is to help us grow outside of Fortnite. We would love to gain a presence in games like Siege, CSGO, Warzone, Clash Royale, Brawl Stars and more!
@@ -109,14 +70,14 @@ export default function AmbassadorsPage() {
 
       {/* What you get out of it Section */}
       <section className="py-16 px-6 bg-[#1A1A1A] scroll-reveal">
-        <div className="max-w-4xl mx-auto">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-4xl mx-auto stagger" data-stagger-step="80">
+          <div className="stagger-child">
             <h2 className="text-3xl font-bold text-center gradient-text mb-8 animate-slide-in-up gpu-accelerated">
               What you get out of it?
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="stagger-child stagger-2">
+          <div className="grid md:grid-cols-2 gap-8 stagger" data-stagger-step="100">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-2 text-white">Board of Directors</h3>
                 <p className="text-gray-300">
@@ -124,7 +85,7 @@ export default function AmbassadorsPage() {
                 </p>
               </div>
             </div>
-            <div className="stagger-child stagger-3">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-2 text-white">Content Promotion</h3>
                 <p className="text-gray-300">
@@ -138,15 +99,15 @@ export default function AmbassadorsPage() {
 
       {/* Brand Ambassadors by Game Section */}
       <section className="py-16 px-6 bg-[#0F0F0F] scroll-reveal">
-        <div className="max-w-4xl mx-auto">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-4xl mx-auto stagger" data-stagger-step="80">
+          <div className="stagger-child">
             <h2 className="text-3xl font-bold text-center gradient-text mb-8 animate-slide-in-up gpu-accelerated">
               Our Brand Ambassadors
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger" data-stagger-step="80">
             {/* Free Fire */}
-            <div className="stagger-child stagger-2">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Free Fire</h3>
                 <div className="space-y-2">
@@ -158,7 +119,7 @@ export default function AmbassadorsPage() {
             </div>
             
             {/* Brawl Stars */}
-            <div className="stagger-child stagger-3">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Brawl Stars</h3>
                 <div className="space-y-2">
@@ -169,7 +130,7 @@ export default function AmbassadorsPage() {
             </div>
             
             {/* Clash Royale */}
-            <div className="stagger-child stagger-4">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Clash Royale</h3>
                 <div className="space-y-2">
@@ -194,7 +155,7 @@ export default function AmbassadorsPage() {
             </div>
 
             {/* Split Gate 2 */}
-            <div className="stagger-child stagger-5">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Split Gate 2</h3>
                 <div className="space-y-2">
@@ -205,7 +166,7 @@ export default function AmbassadorsPage() {
             </div>
 
             {/* Overwatch 2 */}
-            <div className="stagger-child stagger-6">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Overwatch 2</h3>
                 <div className="space-y-2">
@@ -216,7 +177,7 @@ export default function AmbassadorsPage() {
             </div>
 
             {/* Super Smash Brothers Ultimate */}
-            <div className="stagger-child stagger-7">
+            <div className="stagger-child">
               <div className="void-card hover-lift gpu-accelerated tilt">
                 <h3 className="text-xl font-semibold mb-4 text-white">Super Smash Brothers Ultimate</h3>
                 <div className="space-y-2">
@@ -231,8 +192,8 @@ export default function AmbassadorsPage() {
 
       {/* CTA Section */}
       <section className="py-16 px-6 bg-[#1A1A1A] scroll-reveal">
-        <div className="max-w-3xl mx-auto">
-          <div className="stagger-child stagger-1">
+        <div className="max-w-3xl mx-auto stagger" data-stagger-step="90">
+          <div className="stagger-child">
             <div className="void-card text-center">
               <h2 className="text-2xl font-bold mb-4 gradient-text">Ready to Join?</h2>
               <p className="mb-6 text-gray-300">

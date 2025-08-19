@@ -23,8 +23,30 @@ export default function ScrollRevealProvider() {
       elements.forEach((el) => observer.observe(el));
     };
 
+    // Apply ordered stagger to any container with class 'stagger'
+    const applyStagger = () => {
+      const containers = document.querySelectorAll<HTMLElement>('.stagger');
+      containers.forEach((container) => {
+        const start = Number(container.dataset.staggerStart || '0'); // ms
+        const step = Number(container.dataset.staggerStep || '80'); // ms per item
+        let i = 0;
+        Array.from(container.children).forEach((child) => {
+          if (!(child instanceof HTMLElement)) return;
+          // Ensure child participates in our base animation
+          child.classList.add('stagger-child');
+          // Only set delay if not already explicitly defined
+          const hasInlineDelay = child.style.animationDelay && child.style.animationDelay.length > 0;
+          if (!hasInlineDelay) {
+            child.style.animationDelay = `${start + i * step}ms`;
+          }
+          i += 1;
+        });
+      });
+    };
+
     // Initial attach
     observeAll();
+    applyStagger();
 
     // Cinematic scroll (lightweight parallax)
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -61,6 +83,7 @@ export default function ScrollRevealProvider() {
     // Re-run on route updates via mutation observer (covers client nav and late inserts)
     const mutationObserver = new MutationObserver(() => {
       observeAll();
+      applyStagger();
     });
     mutationObserver.observe(document.body, { childList: true, subtree: true });
 

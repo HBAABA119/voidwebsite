@@ -135,12 +135,11 @@ export default function ProductGrid({ products, itemsPerPage = 9 }: ProductGridP
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 scroll-reveal stagger" data-stagger-step="100">
         {currentProducts.map((product, index) => (
           <div 
             key={`${product.id}-${currentPage}`} 
             className={`void-card group hover-lift tilt stagger-child gpu-accelerated`}
-            style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
               <Image

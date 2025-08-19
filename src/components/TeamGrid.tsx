@@ -52,7 +52,6 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
           <div 
             key={`${team.name}-${currentPage}`} 
             className={`void-card scroll-reveal hover-lift tilt gpu-accelerated`} 
-            style={{ animationDelay: `${index * 200}ms` }}
           >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="relative h-64 lg:h-full min-h-[300px] rounded-lg overflow-hidden group">
@@ -70,19 +69,18 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                 <h2 className="text-3xl font-bold gradient-text stagger-child animate-slide-in-right">
                   {team.name}
                 </h2>
-                <p className="text-gray-300 text-lg stagger-child animate-slide-in-right" style={{ animationDelay: '100ms' }}>
+                <p className="text-gray-300 text-lg stagger-child animate-slide-in-right">
                   {team.description}
                 </p>
                 {/* Players (new rich schema) or legacy roster */}
                 {team.players && team.players.length > 0 ? (
-                  <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '200ms' }}>
+                  <div className="stagger-child animate-slide-in-right">
                     <h3 className="text-xl font-semibold mb-4 text-white">Players</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 stagger" data-stagger-step="75">
                       {team.players.map((player, playerIndex) => (
                         <div
                           key={`${player.name}-${playerIndex}`}
                           className="stagger-child animate-slide-in-right"
-                          style={{ animationDelay: `${300 + playerIndex * 75}ms` }}
                         >
                           <PlayerCard
                             name={player.name}
@@ -98,14 +96,13 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                   </div>
                 ) : (
                   team.roster && team.roster.length > 0 && (
-                    <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '200ms' }}>
+                    <div className="stagger-child animate-slide-in-right">
                       <h3 className="text-xl font-semibold mb-3 text-white">Current Roster</h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 stagger" data-stagger-step="60">
                         {team.roster.map((player, playerIndex) => (
                           <div 
                             key={player} 
                             className={`text-gray-400 transition-all duration-300 hover:text-white cursor-pointer hover:translate-x-2 hover:scale-105 p-2 rounded hover:bg-[#2A2A2A] gpu-accelerated`} 
-                            style={{ animationDelay: `${300 + playerIndex * 50}ms` }}
                           >
                             <span className="flex items-center">
                               <span className="w-2 h-2 bg-[#FFFFFF] rounded-full mr-2 animate-pulse" />
@@ -118,14 +115,13 @@ export default function TeamGrid({ teams, itemsPerPage = 2 }: TeamGridProps) {
                   )
                 )}
                 
-                <div className="stagger-child animate-slide-in-right" style={{ animationDelay: '400ms' }}>
+                <div className="stagger-child animate-slide-in-right">
                   <h3 className="text-xl font-semibold mb-3 text-white">Team Achievements</h3>
-                  <div className="space-y-2">
+                  <div className="space-y-2 stagger" data-stagger-step="50">
                     {team.achievements.map((achievement, achIndex) => (
                       <div 
                         key={achievement} 
                         className={`text-gray-400 flex items-start gpu-accelerated`} 
-                        style={{ animationDelay: `${500 + achIndex * 50}ms` }}
                       >
                         <span className="w-2 h-2 bg-[#a2a2a2] rounded-full mr-3 mt-2 animate-pulse" />
                         <span className="flex-1">{achievement}</span>
